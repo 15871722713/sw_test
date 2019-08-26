@@ -1,6 +1,2 @@
-BeautifulRepor=0.1.1
-
-
-
+BeautifulReport==0.1.1
 scapy==2.4.3
-junitxml

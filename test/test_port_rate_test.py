@@ -2,7 +2,7 @@
 # @Author: JinHua
 # @Date:   2019-08-23 16:46:34
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-24 20:09:18
+# @Last Modified time: 2019-08-26 09:44:27
 
 import time
 import unittest
@@ -12,12 +12,17 @@ from BeautifulReport import BeautifulReport as bf
 
 from sw_common_win import *
 
+timestr = str(time.strftime("%Y%m%d%H%M%S"))
+filename = 'test_port_rate_test_' + timestr
+logname = 'log_port_rate_test_' + timestr
+
 
 class TestPortRate(unittest.TestCase):
     """docstring for TestPortRate"""
     @classmethod
     def setUpClass(self):
         logger.set_log_level(logger.DEBUG)
+        logger.logfile(logname)
         logger.log('Set up test')
         global cli, old_auto_negotiation, old_speed
         cli = sw_consele()
@@ -70,6 +75,7 @@ class TestPortRate(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         logger.log('Tearing down test')
+        logger.close_log_file()
         # cli.send_cmd(cli.p_sw_privilege, 'mac-address aging-time {}'.format(aging_time))
 
 
@@ -77,5 +83,4 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(TestPortRate))
     run = bf(suite)
-    filename = 'test_port_rate_test_' + str(time.strftime("%Y%m%d%H%M%S"))
     run.report(filename=filename, report_dir='result', description='test_port_rate_test')

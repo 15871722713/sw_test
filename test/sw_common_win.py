@@ -2,7 +2,7 @@
 # @Author: JinHua
 # @Date:   2019-08-21 15:16:17
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-24 20:47:12
+# @Last Modified time: 2019-08-25 20:16:23
 
 
 import re
@@ -134,8 +134,21 @@ def arp_ping(srcmac, iface):
 
 
 def generate_mac():
-    logger.log('generate mac')
     return ":".join(["%02x" % x for x in map(lambda x: randint(0, 255), range(6))])
+
+
+def send_packets(max_mac_num):
+    flag = True
+    mac_list = []
+    while flag:
+        mac = generate_mac()
+        if mac not in mac_list:
+            mac_list.append(mac)
+        if len(mac_list) == max_mac_num:
+            flag = False
+    logger.log('mac list is :\r{}'.format(mac_list))
+    for mac in mac_list:
+        arp_ping(mac, iface)
 
 
 def send_packet(max_mac_num):
@@ -167,4 +180,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    send_packets(max_mac_num)
