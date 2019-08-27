@@ -2,7 +2,7 @@
 # @Author: JinHua
 # @Date:   2019-08-22 14:24:44
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-26 09:51:30
+# @Last Modified time: 2019-08-27 11:05:37
 
 import time
 import unittest
@@ -13,8 +13,8 @@ from BeautifulReport import BeautifulReport as bf
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
-filename = 'test_mac_capacity_test_' + timestr
-logname = 'log_mac_capacity_test_' + timestr
+filename = 'test_mac_capacity_test_{}'.format(timestr)
+logname = 'log_mac_capacity_test_{}.log'.format(timestr)
 
 
 class TestMacCapacity(unittest.TestCase):

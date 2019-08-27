@@ -2,7 +2,7 @@
 # @Author: JinHua
 # @Date:   2019-08-23 16:46:34
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-26 09:44:27
+# @Last Modified time: 2019-08-27 11:05:19
 
 import time
 import unittest
@@ -13,8 +13,8 @@ from BeautifulReport import BeautifulReport as bf
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
-filename = 'test_port_rate_test_' + timestr
-logname = 'log_port_rate_test_' + timestr
+filename = 'test_port_rate_test_{}'.format(timestr)
+logname = 'log_port_rate_test_{}.log'.format(timestr)
 
 
 class TestPortRate(unittest.TestCase):
