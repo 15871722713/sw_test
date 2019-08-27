@@ -1,2 +1,5 @@
-BeautifulReport==0.1.1
+junitxml==0.7
 scapy==2.4.3
+
+
+#国内镜像  https://pypi.tuna.tsinghua.edu.cn/simple/

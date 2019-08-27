@@ -2,18 +2,18 @@
 # @Author: JinHua
 # @Date:   2019-08-22 14:24:44
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-27 11:05:37
+# @Last Modified time: 2019-08-27 16:47:46
 
 import time
 import unittest
 import logger
-from BeautifulReport import BeautifulReport as bf
+import junitxml
 
 
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
-filename = 'test_mac_capacity_test_{}'.format(timestr)
+filename = 'test_mac_capacity_test_{}.xml'.format(timestr)
 logname = 'log_mac_capacity_test_{}.log'.format(timestr)
 
 
@@ -45,7 +45,12 @@ class TestMacCapacity(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestMacCapacity))
-    run = bf(suite)
-    run.report(filename=filename, report_dir='result', description='test_mac_capacity_test')
+    fp = open('result/{}'.format(filename), 'wb')
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestMacCapacity)
+
+    result = junitxml.JUnitXmlResult(fp)
+    result.failfast = True
+    result.failfast = True
+    result.startTestRun()
+    suite.run(result)
+    result.stopTestRun()

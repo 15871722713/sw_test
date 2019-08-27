@@ -2,18 +2,18 @@
 # @Author: JinHua
 # @Date:   2019-08-23 16:46:34
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-27 11:05:19
+# @Last Modified time: 2019-08-27 16:47:52
 
 import time
 import unittest
 import logger
-from BeautifulReport import BeautifulReport as bf
+import junitxml
 
 
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
-filename = 'test_port_rate_test_{}'.format(timestr)
+filename = 'test_port_rate_test_{}.xml'.format(timestr)
 logname = 'log_port_rate_test_{}.log'.format(timestr)
 
 
@@ -80,7 +80,12 @@ class TestPortRate(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestPortRate))
-    run = bf(suite)
-    run.report(filename=filename, report_dir='result', description='test_port_rate_test')
+    fp = open('result/{}'.format(filename), 'wb')
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestPortRate)
+
+    result = junitxml.JUnitXmlResult(fp)
+    result.failfast = True
+    result.failfast = True
+    result.startTestRun()
+    suite.run(result)
+    result.stopTestRun()
