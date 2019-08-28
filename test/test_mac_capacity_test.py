@@ -2,14 +2,12 @@
 # @Author: JinHua
 # @Date:   2019-08-22 14:24:44
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-27 16:47:46
+# @Last Modified time: 2019-08-28 15:04:59
 
 import time
 import unittest
 import logger
 import junitxml
-
-
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
@@ -32,8 +30,6 @@ class TestMacCapacity(unittest.TestCase):
 
     def test001MaxMacTest(self):
         logger.log('Start to test')
-        # send_packet_with_thread(max_mac_num)
-        send_packets(max_mac_num)
         max_mac = int(get_output(cli, cli.p_sw_privilege, 'dis mac-address total-number', r'\s\S.*?(\d{1,7})'))
         logger.log('Max mac is {}'.format(max_mac))
 
