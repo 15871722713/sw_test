@@ -2,7 +2,7 @@
 # @Author: JinHua
 # @Date:   2019-08-22 14:24:44
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-30 16:41:41
+# @Last Modified time: 2019-08-30 16:47:57
 
 import os
 import sys
@@ -11,6 +11,7 @@ import time
 import unittest
 import logger
 import HTMLTestRunner
+
 
 from sw_common_win import *
 
@@ -36,6 +37,7 @@ class TestMacCapacity(unittest.TestCase):
         logger.log('Start to test')
         # send_packet_with_thread(max_mac_num)
         # send_packets(max_mac_num)
+
         max_mac = int(get_output(cli, cli.p_sw_privilege, 'dis mac-address total-number', r'\s\S.*?(\d{1,7})'))
         logger.log('Max mac is {}'.format(max_mac))
 
