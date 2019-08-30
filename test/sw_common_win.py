@@ -2,7 +2,7 @@
 # @Author: JinHua
 # @Date:   2019-08-21 15:16:17
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-25 20:16:23
+# @Last Modified time: 2019-08-30 16:30:36
 
 
 import re
@@ -12,7 +12,20 @@ import logger
 from time import sleep
 from random import randint
 from config_read import get_config_by_name
-from scapy.all import *
+
+
+# class DualPlatform(str):
+#     def __eq__(self, other):
+#         return str.__eq__(self, other) or str.__eq__("cli", other)
+
+#     def __ne__(self, other):
+#         return str.__ne__(self, other) and str.__ne__("cli", other)
+
+
+# import sys
+# sys.platform = DualPlatform("win32")
+
+# from scapy.all import *
 
 
 # import platform

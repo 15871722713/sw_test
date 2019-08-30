@@ -1,0 +1,19 @@
+Set up test
+Start to login switch
+Login sucessful
+Change mode from user to privilege
+Send privilege command:dis mac-address aging-timeoutput is:dis mac-address aging-time
+  Aging time: 0 second(s)
+[HUAWEI]
+Send privilege command:mac-address aging-time 0output is:mac-address aging-time 0
+[HUAWEI]
+Start to test
+Send privilege command:dis mac-address total-numberoutput is:dis mac-address total-number
+Info: This operation may take a few seconds. Please wait a moment...
+Total number of MAC address : 29 
+
+[HUAWEI]
+Max mac is 29
+Tearing down test
+Send privilege command:mac-address aging-time 0output is:mac-address aging-time 0
+[HUAWEI]

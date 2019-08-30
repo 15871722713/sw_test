@@ -2,18 +2,23 @@
 # @Author: JinHua
 # @Date:   2019-08-23 16:46:34
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-27 16:47:52
+# @Last Modified time: 2019-08-30 16:41:48
+
+
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 import time
 import unittest
 import logger
-import junitxml
+import HTMLTestRunner
 
 
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
-filename = 'test_port_rate_test_{}.xml'.format(timestr)
+filename = 'test_port_rate_test_{}.html'.format(timestr)
 logname = 'log_port_rate_test_{}.log'.format(timestr)
 
 
@@ -79,13 +84,8 @@ class TestPortRate(unittest.TestCase):
         # cli.send_cmd(cli.p_sw_privilege, 'mac-address aging-time {}'.format(aging_time))
 
 
-if __name__ == '__main__':
-    fp = open('result/{}'.format(filename), 'wb')
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestPortRate)
-
-    result = junitxml.JUnitXmlResult(fp)
-    result.failfast = True
-    result.failfast = True
-    result.startTestRun()
-    suite.run(result)
-    result.stopTestRun()
+fp = open('result/{}'.format(filename), 'wb')
+suite = unittest.TestLoader().loadTestsFromTestCase(TestPortRate)
+runner = HTMLTestRunner.HTMLTestRunner(fp)
+runner.run(suite)
+fp.close()

@@ -1,0 +1,7 @@
+Set up test
+Start to login switch
+Login sucessful
+Change mode from user to privilege
+Send privilege command:dis mac-address aging-timeoutput is:dis mac-address aging-time
+  Aging time: 0 second(s)
+[HUAWEI]

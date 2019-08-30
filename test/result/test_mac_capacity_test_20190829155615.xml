@@ -1,0 +1,13 @@
+<testsuite errors="1" failures="0" name="" tests="1" time="60.010">
+<testcase classname="__main__.TestMacCapacity" name="test001MaxMacTest" time="18.139">
+<error type="NameError">Traceback (most recent call last):
+  File "test_mac_capacity_test.py", line 36, in test001MaxMacTest
+    send_packets(max_mac_num)
+  File "C:\Users\Administrator\Desktop\sw_test\test\sw_common_win.py", line 151, in send_packets
+    arp_ping(mac, iface)
+  File "C:\Users\Administrator\Desktop\sw_test\test\sw_common_win.py", line 133, in arp_ping
+    sendp(Ether(src=srcmac, dst="ff:ff:ff:ff:ff:ff") / ARP(pdst="192.168.1.2"), count=1, verbose=False, iface=iface)
+NameError: global name 'sendp' is not defined
+</error>
+</testcase>
+</testsuite>

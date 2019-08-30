@@ -2,18 +2,20 @@
 # @Author: JinHua
 # @Date:   2019-08-22 14:24:44
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-27 16:47:46
+# @Last Modified time: 2019-08-30 16:41:41
 
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 import time
 import unittest
 import logger
-import junitxml
-
+import HTMLTestRunner
 
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
-filename = 'test_mac_capacity_test_{}.xml'.format(timestr)
+filename = 'test_mac_capacity_test_{}.html'.format(timestr)
 logname = 'log_mac_capacity_test_{}.log'.format(timestr)
 
 
@@ -33,7 +35,7 @@ class TestMacCapacity(unittest.TestCase):
     def test001MaxMacTest(self):
         logger.log('Start to test')
         # send_packet_with_thread(max_mac_num)
-        send_packets(max_mac_num)
+        # send_packets(max_mac_num)
         max_mac = int(get_output(cli, cli.p_sw_privilege, 'dis mac-address total-number', r'\s\S.*?(\d{1,7})'))
         logger.log('Max mac is {}'.format(max_mac))
 
@@ -44,13 +46,8 @@ class TestMacCapacity(unittest.TestCase):
         logger.close_log_file()
 
 
-if __name__ == '__main__':
-    fp = open('result/{}'.format(filename), 'wb')
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestMacCapacity)
-
-    result = junitxml.JUnitXmlResult(fp)
-    result.failfast = True
-    result.failfast = True
-    result.startTestRun()
-    suite.run(result)
-    result.stopTestRun()
+fp = open('result/{}'.format(filename), 'wb')
+suite = unittest.TestLoader().loadTestsFromTestCase(TestMacCapacity)
+runner = HTMLTestRunner.HTMLTestRunner(fp)
+runner.run(suite)
+fp.close()

@@ -1,0 +1,100 @@
+Set up test
+Start to login switch
+Login sucessful
+Change mode from user to privilege
+Send privilege command:dis interface GigabitEthernet 0/0/2output is:dis interface GigabitEthernet 0/0/2
+GigabitEthernet0/0/2 current state : UP
+Line protocol current state : UP
+Description:
+Switch Port, Link-type : access(negotiated),
+PVID :    1, TPID : 8100(Hex), The Maximum Frame Length is 9216
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is a8f5-ac13-17a0
+Last physical up time   : 2019-04-28 18:05:25
+Last physical down time : 2019-04-28 18:05:21
+Current system time: 2019-04-28 18:28:56
+Port Mode: COMMON COPPER
+Speed : 10,     Loopback: NONE
+Duplex: FULL,   Negotiation: DISABLE
+Mdi   : AUTO,   Flow-control: DISABLE
+Last 300 seconds input rate 856 bits/sec, 0 packets/sec
+Last 300 seconds output rate 152 bits/sec, 0 packets/sec
+Input peak rate 2106272 bits/sec, Record time: 2019-04-20 17:20:48
+Output peak rate 142648 bits/sec, Record time: 2019-04-21 19:36:59
+
+Input:  1001392 packets, 111608403 bytes
+  Unicast:                          0,  Multicast:                      372345
+  Broadcast:                   629046,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+  Frames:                           0
+
+    Total Error:                      1
+  CRC:                              0,  Giants:                              0
+  Runts:                            1,  DropEvents:                          0
+  Alignments:                       0,  Symbols:                             0
+  Ignoreds:                         0
+
+Output:  133423 packets, 23085641 bytes
+  Unicast:                          0,  Multicast:                      111981
+  Broadcast:                    21442,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+
+  Total Error:                      0
+  Collisions:                       0,  Late Collisions:                     0
+  Deferreds:                        0
+
+    Input bandwidth utilization threshold : 80.00%
+    Output bandwidth utilization threshold: 80.00%
+    Input bandwidth utilization  : 0.01%
+    Output bandwidth utilization :    0%
+
+[HUAWEI]
+[HUAWEI]
+Send privilege command:dis interface GigabitEthernet 0/0/1output is:dis interface GigabitEthernet 0/0/1
+GigabitEthernet0/0/1 current state : UP
+Line protocol current state : UP
+Description:
+Switch Port, Link-type : access(negotiated),
+PVID :    1, TPID : 8100(Hex), The Maximum Frame Length is 9216
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is a8f5-ac13-17a0
+Last physical up time   : 2019-04-28 18:05:25
+Last physical down time : 2019-04-28 18:05:21
+Current system time: 2019-04-28 18:29:07
+Port Mode: COMMON COPPER
+Speed : 10,     Loopback: NONE
+Duplex: HALF,   Negotiation: ENABLE
+Mdi   : AUTO,   Flow-control: DISABLE
+Last 300 seconds input rate 152 bits/sec, 0 packets/sec
+Last 300 seconds output rate 856 bits/sec, 0 packets/sec
+Input peak rate 18880 bits/sec, Record time: 2019-04-21 23:33:31
+Output peak rate 225152 bits/sec, Record time: 2019-04-23 03:06:36
+
+Input:  49486 packets, 11494315 bytes
+  Unicast:                          0,  Multicast:                       49486
+  Broadcast:                        0,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+  Frames:                           0
+
+    Total Error:                      0
+  CRC:                              0,  Giants:                              0
+  Runts:                            0,  DropEvents:                          0
+  Alignments:                       0,  Symbols:                             0
+  Ignoreds:                         0
+
+Output:  687431 packets, 85236083 bytes
+  Unicast:                          0,  Multicast:                      372348
+  Broadcast:                   315083,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+
+  Total Error:                     30
+  Collisions:                       0,  Late Collisions:                     0
+  Deferreds:                       30
+
+    Input bandwidth utilization threshold : 80.00%
+    Output bandwidth utilization threshold: 80.00%
+    Input bandwidth utilization  :    0%
+    Output bandwidth utilization : 0.01%
+
+[HUAWEI]
+[HUAWEI]
+Old port rate is 10,port auto negotiation is DISABLE
+Start to test
