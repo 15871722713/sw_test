@@ -2,19 +2,20 @@
 # @Author: JinHua
 # @Date:   2019-08-22 14:24:44
 # @Last Modified by:   JinHua
-# @Last Modified time: 2019-08-27 11:05:37
+# @Last Modified time: 2019-09-06 13:23:46
 
+import os
 import time
 import unittest
 import logger
-from BeautifulReport import BeautifulReport as bf
 
 
 from sw_common_win import *
 
 timestr = str(time.strftime("%Y%m%d%H%M%S"))
+folder = os.path.dirname(os.path.abspath(__file__))
 filename = 'test_mac_capacity_test_{}'.format(timestr)
-logname = 'log_mac_capacity_test_{}.log'.format(timestr)
+logname = '{}/log/log_mac_capacity_test_{}.log'.format(folder, timestr)
 
 
 class TestMacCapacity(unittest.TestCase):
@@ -32,8 +33,6 @@ class TestMacCapacity(unittest.TestCase):
 
     def test001MaxMacTest(self):
         logger.log('Start to test')
-        # send_packet_with_thread(max_mac_num)
-        send_packets(max_mac_num)
         max_mac = int(get_output(cli, cli.p_sw_privilege, 'dis mac-address total-number', r'\s\S.*?(\d{1,7})'))
         logger.log('Max mac is {}'.format(max_mac))
 
@@ -41,11 +40,11 @@ class TestMacCapacity(unittest.TestCase):
     def tearDownClass(self):
         logger.log('Tearing down test')
         cli.send_cmd(cli.p_sw_privilege, 'mac-address aging-time {}'.format(aging_time))
-        logger.close_log_file()
-
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(TestMacCapacity))
-    run = bf(suite)
+    run = testReport(suite)
     run.report(filename=filename, report_dir='result', description='test_mac_capacity_test')
+    logger.close_log_file()
+
